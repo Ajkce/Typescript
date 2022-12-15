@@ -17,4 +17,3 @@ person.hobbies.forEach(element => {
     console.log(element);
 });
 console.log(person);
-//# sourceMappingURL=arrays.js.map

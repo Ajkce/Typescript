@@ -21,4 +21,3 @@ function printResult(num : number):void {
 */
 let salary;
 /* Note that typescipt alos has a separate type called as undefined. In the below example the type of salary will remain undefined */
-//# sourceMappingURL=function.js.map

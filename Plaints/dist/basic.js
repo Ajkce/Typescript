@@ -7,4 +7,3 @@ const number2 = 2.8;
 let num;
 const result = addnumber(number1, number2);
 console.log(result);
-//# sourceMappingURL=basic.js.map

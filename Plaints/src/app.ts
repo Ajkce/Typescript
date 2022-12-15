@@ -1,27 +1,38 @@
-let userInput: unknown;
-let userName: string;
+class Department {
+  name: string;
+  //It is a private property which cannot be modified directly and it can be changed only via the functions where it is called
+  private employees: string[];
 
-userInput = 5;
-userInput = "max";
+  constructor(n: string) {
+    this.name = n;
+    this.employees = [];
+  }
 
-/* 
- The type unknown is similiar to any where it can be assigned to anything later but you cant assign a string or number type to unknown
- 
- for eg:  userName = userInput;
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
 
- you cant do this directly because you will first have to chack if the type of userInput is string then assign the string type to userinput
- */
-
-if (typeof userInput === "string") {
-  userName = userInput;
+  printEmoloyee() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
 }
 
-const button = document.querySelector('.button');
-console.log(button)
+let accounting = new Department("Accounting");
+accounting.addEmployee("John");
+accounting.printEmoloyee();
+console.log(accounting);
 
-button?.addEventListener('click', () => {clickHandler('You are welcome')})
+class ItDepartMent extends Department {
+  admins: string[];
 
-function clickHandler(messae: string){
-  console.log("Clicked !" + messae)
+  constructor(name: string, admins: string[]) {
+    super(name);
+    this.admins = admins;
+  }
 }
 
+let Itaccount = new ItDepartMent("IT Department", ["Ajaya"]);
+Itaccount.addEmployee('Max')
+Itaccount.addEmployee('John')
+console.log(Itaccount);
