@@ -1,46 +1,61 @@
-// type addFn = (a: number, b: number) => number;
-interface addFn {
-  (a: number, b: number) : number;
-}
-
-let addNumber : addFn;
-addNumber = (n1: number, n2: number) => {
-  return n1 + n2
-}
-
-
-
-interface Person {
+type Admin = {
   name: string;
-  age?: number;
+  privelages: string[];
+};
 
-  greet(phrase: string): void;
-}
-
-
-let user : Person;
-user = {
-  name : "ajaya",
-  
-  
-
-  greet(name){
-    console.log("Hello " + name)
-  }
-}
-
-class People implements Person {
+type Employee = {
   name: string;
-  age = 30;
+  startDate: Date;
+};
 
-  constructor(n: string) {
-    this.name = n;
+type ElevatedEmployee = Admin & Employee;
+
+const e1: ElevatedEmployee = {
+  name: "max",
+  privelages: ["Create-server"],
+  startDate: new Date(),
+};
+
+type unknownEmployee = Employee | Admin;
+
+function printEmployee(emp: unknownEmployee) {
+  if('privelages' in emp){
+
+    console.log("Privileges" + emp.privelages);
   }
+  if('startDate' in emp){
 
-  greet(phrase: string): void {
-    console.log(phrase + " " + this.name);
+    console.log("Privileges" + emp.startDate);
+  }
+  
+}
+class Car {
+drive(){
+  console.log('Driving a car ...')
+}
+
+}
+class Truck {
+drive(){
+  console.log('Driving a truck ...')
+}
+loadCargo(amount: number){
+  console.log('Loading cargo' + amount)
+}
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+function useVehicle(vehicle : Vehicle){
+  vehicle.drive();
+  if(vehicle instanceof Truck){
+
+    vehicle.loadCargo(1000)
   }
 }
 
-let human = new People("Ajaya");
-console.log(human)
+useVehicle(v1);
+useVehicle(v2);

@@ -1,23 +1,37 @@
 "use strict";
-let addNumber;
-addNumber = (n1, n2) => {
-    return n1 + n2;
+const e1 = {
+    name: "max",
+    privelages: ["Create-server"],
+    startDate: new Date(),
 };
-let user;
-user = {
-    name: "ajaya",
-    greet(name) {
-        console.log("Hello " + name);
+function printEmployee(emp) {
+    if ('privelages' in emp) {
+        console.log("Privileges" + emp.privelages);
     }
-};
-class People {
-    constructor(n) {
-        this.age = 30;
-        this.name = n;
-    }
-    greet(phrase) {
-        console.log(phrase + " " + this.name);
+    if ('startDate' in emp) {
+        console.log("Privileges" + emp.startDate);
     }
 }
-let human = new People("Ajaya");
-console.log(human);
+class Car {
+    drive() {
+        console.log('Driving a car ...');
+    }
+}
+class Truck {
+    drive() {
+        console.log('Driving a truck ...');
+    }
+    loadCargo(amount) {
+        console.log('Loading cargo' + amount);
+    }
+}
+const v1 = new Car();
+const v2 = new Truck();
+function useVehicle(vehicle) {
+    vehicle.drive();
+    if (vehicle instanceof Truck) {
+        vehicle.loadCargo(1000);
+    }
+}
+useVehicle(v1);
+useVehicle(v2);
