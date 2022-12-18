@@ -1,11 +1,35 @@
-interface Greet {
+// type addFn = (a: number, b: number) => number;
+interface addFn {
+  (a: number, b: number) : number;
+}
+
+let addNumber : addFn;
+addNumber = (n1: number, n2: number) => {
+  return n1 + n2
+}
+
+
+
+interface Person {
   name: string;
-  age: number;
+  age?: number;
 
   greet(phrase: string): void;
 }
 
-class People implements Greet {
+
+let user : Person;
+user = {
+  name : "ajaya",
+  
+  
+
+  greet(name){
+    console.log("Hello " + name)
+  }
+}
+
+class People implements Person {
   name: string;
   age = 30;
 
